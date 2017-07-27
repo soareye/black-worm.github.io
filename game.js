@@ -9,7 +9,8 @@
         var backupds = [];
         var boxArray = [];
         var wormTail = [];
-        var dead, paused = false;
+        var dead = false;
+        var paused = false;
         var c = document.createElement("canvas");
         c.id = "canvas";
         c.style.width = cwidth + "px";
