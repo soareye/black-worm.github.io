@@ -5,7 +5,10 @@
         var xpos,ypos = 20;
         var direction = "forward";
         var run, currentMap;
-        var dArray, backupds, boxArray, wormTail = [];
+        var dArray = [];
+        var backupds = [];
+        var boxArray = [];
+        var wormTail = [];
         var dead, paused = false;
         var c = document.createElement("canvas");
         c.id = "canvas";
