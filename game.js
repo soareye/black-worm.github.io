@@ -1,4 +1,4 @@
-var cheight = 8 * window.innerHeight / 10;
+        var cheight = 8 * window.innerHeight / 10;
         var cwidth = 8 * window.innerWidth / 10;
         var rgoal, ggoal, bgoal, rvalue, gvalue, bvalue = 200;
         var angle = 0;
