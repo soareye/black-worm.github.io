@@ -282,8 +282,12 @@
             angle = 0;
             xpos, ypos = 20;
             run, currentMap;
-            dArray, backupds, boxArray, wormTail = [];
-            dead, paused = false;
+            dArray = [];
+            backupds = [];
+            boxArray = [];
+            wormTail = [];
+            dead = false;
+            paused = false;
             clearInterval(run);
             ctx.clearRect(0, 0, cwidth * 2, cheight * 2);
             newSquare(cwidth * cheight);
