@@ -1,0 +1,7 @@
+        body {
+            background-color: gray;
+        }
+        #canvas {
+            border: 5px solid black;
+            position: absolute;
+        }
