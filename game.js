@@ -129,7 +129,6 @@
         function clearDiamonds() {
             var backuparray = [];
             if (dArray.length === 0) {
-                paused = true;
                 angle = 0;
                 xpos = 20;
                 ypos = 20;
