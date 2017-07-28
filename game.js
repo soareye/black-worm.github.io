@@ -129,7 +129,7 @@
                 angle = 0;
                 xpos = 20;
                 ypos = 20;
-                setTimeout(runGame, 1000);
+                setTimeout(init, 1000);
             }
             for (var i = 0; i < dArray.length; i++) {
                 if (!(xpos < dArray[i].xpos + dArray[i].width + 15 &&
