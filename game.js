@@ -11,13 +11,14 @@
         var ypos = 20;
         var direction = "forward";
         var paused = false;
+        var victory = false;
         var run;
         var dArray = [];
         var backupds = [];
         var boxArray = [];
         var wormTail = [];
         var currentMap;
-        var dead = false;
+        var gameOver = false;
         var c = document.createElement("canvas");
         c.id = "canvas";
         c.style.width = cwidth + "px";
@@ -42,7 +43,7 @@
                     ypos = 20;
                     angle = 0;
                     paused = false;
-                    dead = false;
+                    gameOver = false;
                 }
             }
             if (e.which === 84) {
@@ -98,7 +99,10 @@
                 wormTail.shift();
             }
             else if (wormTail.length > 0) wormTail.shift();
-            else paused = true;
+            else {
+                    if (victory) init(); 
+                    else paused = true;
+            }
         };
         function Diamond(width, height) {
             this.xpos;
@@ -129,7 +133,8 @@
                 angle = 0;
                 xpos = 20;
                 ypos = 20;
-                setTimeout(init, 1000);
+                gameOver = true;
+                victory = true;
             }
             for (var i = 0; i < dArray.length; i++) {
                 if (!(xpos < dArray[i].xpos + dArray[i].width + 15 &&
@@ -175,16 +180,16 @@
         };
         function edges() {
             if (xpos > cwidth * 2 - 5) {
-                dead = true;
+                gameOver = true;
             }
             if (xpos < 5) {
-                dead = true;
+                gameOver = true;
             }
             if (ypos > cheight * 2 - 5) {
-                dead = true;
+                gameOver = true;
             }
             if (ypos < 5) {
-                dead = true;
+                gameOver = true;
             }
             var front = ctx.getImageData(xpos + Math.cos(angle) * 12, ypos + Math.sin(angle) * 12, 1, 1).data;
             var left = ctx.getImageData(xpos + Math.cos(angle + Math.PI / 2) * 12, ypos + Math.sin(angle + Math.PI / 2) * 12, 1, 1).data;
@@ -227,7 +232,7 @@
                     side[i + 1] === 0 &&
                     side[i + 2] === 0 &&
                     side[i + 3] === 255) {
-                    dead = true;
+                    gameOver = true;
                 }
             }
         };
@@ -269,7 +274,7 @@
         function runGame() {
             run = setInterval(function () {
                 if (!paused) {
-                    if (!dead) {
+                    if (!gameOver) {
                     clearDiamonds();
                     edges();
                     drawMap(boxArray, dArray, wormTail);
@@ -300,7 +305,8 @@
             backupds = [];
             boxArray = [];
             wormTail = [];
-            dead = false;
+            gameOver = false;
+            victory = false;
             paused = false;
             clearInterval(run);
             ctx.clearRect(0, 0, cwidth * 2, cheight * 2);
