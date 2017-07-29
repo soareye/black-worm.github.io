@@ -129,9 +129,6 @@
         function clearDiamonds() {
             var backuparray = [];
             if (dArray.length === 0) {
-                angle = 0;
-                xpos = 20;
-                ypos = 20;
                 gameOver = true;
                 victory = true;
             }
